@@ -1,0 +1,65 @@
+the commands we'll be using.
+
+
+
+
+.showturtle() Shows the turtle on the screen
+
+.forward(50) Allows the turtle to move 50 pixels
+
+.right(90) Turns the turtle right 90 degrees
+
+.left(90) Turns the turtle left 90 degrees
+
+.setheading(90) Sets the turtle’s heading to a 90 degrees
+
+.heading() Returns the turtle’s heading
+
+.penup() Allows you to move the turtle without drawing a line
+
+.pendown() Allows you to move the turtle with the pen down.
+
+.circle(radius) Draws a circle with a specific radius.
+
+.dot() Draws a simple dot
+
+.pensize(width) Allows you to change the width of the pen in pixels.
+
+.pencolor(color) Allows you to change the color of the pen.
+
+.bgcolor(color) Allows you to change the background color of the turtle’s 
+graphics window.
+
+.clear() Erases all drawings. Does not reset anything.
+
+.reset() Erases all drawings that currently appear in the graphics window,
+resets the drawing color to black, resets the location of the turtle to
+the middle of the screen and resets the background color.
+
+.clearscreen() Erases all drawings that currently appear in the graphics window, resets the drawing color to black, resets the graphics window
+background color to white and resets the turtle to its original
+position in the center of the screen.
+
+.setup(width, height) Specifies the size for the graphics window
+
+.goto(x, y) Moves the turtle to a specifc postion on the screen.
+
+.pos() Returns the turtle’s position on the screen.
+
+.xcor() Returns the turtles x coordinate position on the screen
+
+.ycor() Returns the turtles y coordinate position on the screen.
+
+.speed(speed) Allows you to set the speed of the turtle from 0 to 10.
+
+.hideturtle() Hides the turtle
+
+.write() Displays text in the graphics window.
+
+.begin_fill() Fills a shape. Use this before you draw the shape.
+
+.end_fill() Ends filling a shape()
+
+.fillcolor(color) Fills a shape with a color
+
+.done() Allows the graphics window to stay open after the program has run.
