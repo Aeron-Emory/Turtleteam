@@ -10,7 +10,7 @@ def main():
   # Call function 1 
   set_background_color(screen, background_color)
   # Ask for what background pattern
-  pattern_choice = input("Enter the desired pattern shape (grid, stripes, diagonal): ")
+  pattern_choice = input("Enter the desired pattern shape (grid, stripes, diagonal, Dot): ")
   # Call function 2
   draw_grid_pattern(screen, pattern_choice)
   # Ask for what shape
@@ -39,6 +39,10 @@ def draw_grid_pattern(screen, pattern):
       print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
   elif pattern == "diagonal":
     Diagonal(width, height)
+  elif pattern == "Dot":
+    dot_size = int(input("Size of each Dots: "))
+    spacing = int(input("Spacing between each Dots: "))
+    DotPattern(dot_size, spacing, width, height)
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
@@ -59,10 +63,10 @@ def Horizontal(width, height):
     turtle.goto(width // 2, y * 50)
 
 # function 2.3 (Diagonal lines)
-turtle.speed(0)
-turtle.penup()
-stripe_width = 20
 def Diagonal(width, height):
+  turtle.speed(0)
+  turtle.penup()
+  stripe_width = 20
   diagonal_length = (width**2 + height**2)**0.5
   num_stripes = int(diagonal_length // stripe_width) + 1
   for i in range(-num_stripes, num_stripes):
@@ -74,6 +78,17 @@ def Diagonal(width, height):
     end_y = start_y - diagonal_length
     turtle.goto(end_x, end_y)
     turtle.penup()
+
+# function 2.4 (Dots)
+def DotPattern(dot_size, spacing, width, height):
+  turtle.speed(0)
+  turtle.penup()
+  start_x = -width / 2 + spacing / 2
+  start_y = height / 2 - spacing / 2
+  for y in range(int(height / spacing)):
+    for x in range(int(width / spacing)):
+        turtle.goto(start_x + x * spacing, start_y - y * spacing)
+        turtle.dot(dot_size)
 
 # function 3 (foreground design options?)
 def draw_shape(screen, shape):
