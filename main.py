@@ -38,6 +38,7 @@ def draw_grid_pattern(screen, pattern):
     else:
       print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
   elif pattern == "diagonal":
+    Diagonal(width, height)
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
@@ -56,6 +57,23 @@ def Horizontal(width, height):
     turtle.goto(-width // 2, y * 50)
     turtle.pendown()
     turtle.goto(width // 2, y * 50)
+
+# function 2.3 (Diagonal lines)
+turtle.speed(0)
+turtle.penup()
+stripe_width = 20
+def Diagonal(width, height):
+  diagonal_length = (width**2 + height**2)**0.5
+  num_stripes = int(diagonal_length // stripe_width) + 1
+  for i in range(-num_stripes, num_stripes):
+    start_x = max(-width / 2, -width / 2 + i * stripe_width)
+    start_y = min(height / 2, height / 2 + i * stripe_width)
+    turtle.goto(start_x, start_y)
+    turtle.pendown()
+    end_x = start_x + diagonal_length
+    end_y = start_y - diagonal_length
+    turtle.goto(end_x, end_y)
+    turtle.penup()
 
 # function 3 (foreground design options?)
 def draw_shape(screen, shape):
