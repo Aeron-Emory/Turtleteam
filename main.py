@@ -11,11 +11,11 @@ def main():
   set_background_color(screen, background_color)
   # Ask for what background pattern
   print("Enter the desired pattern shape")
-  pattern_choice = input("(grid, stripes, diagonal, Dot, Diagonal R, Diagrid): ")
+  pattern_choice = input("(Grid, Stripes, Diagonal, Dot, Diagonal R, Diagrid): ")
   # Call function 2
   draw_grid_pattern(screen, pattern_choice)
   # Ask for what shape
-  shape_choice = input("Enter the shape you want to draw (diamon, square, circle): ")
+  shape_choice = input("Enter the shape you want to draw (diamond, square, circle): ").lower()
   # Call function 3
   draw_shape(screen, shape_choice)
   # Ask for Text Letter overlay
@@ -27,10 +27,10 @@ def set_background_color(screen, color):
 # function 2 (logo back design / pattern options?)
 def draw_grid_pattern(screen, pattern):
   width, height = screen.window_width(), screen.window_height()
-  if pattern == "grid":
+  if pattern == "Grid":
     Verticle(width, height)
     Horizontal(width, height)
-  elif pattern == "stripes":
+  elif pattern == "Stripes":
     stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
     if stripe_direction == "horizontal":
       Horizontal(width, height)
@@ -38,7 +38,7 @@ def draw_grid_pattern(screen, pattern):
       Verticle(width, height)
     else:
       print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
-  elif pattern == "diagonal":
+  elif pattern == "Diagonal":
     Diagonal(width, height)
   elif pattern == "Dot":
     dot_size = int(input("Size of each Dots: "))
@@ -49,6 +49,9 @@ def draw_grid_pattern(screen, pattern):
   elif pattern == "Diagrid":
     Diagonal(width, height)
     diagonalR(width, height)
+  else:
+    print("Invalid pattern choice. Please choose from") 
+    print("'Grid', 'Stripes', 'Diagonal', 'Dot', 'Diagonal R', or 'Diagrid'.")
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
@@ -115,10 +118,11 @@ def diagonalR(width, height):
 
 # function 3 (foreground design options?)
 def draw_shape(screen, shape):
-  print(shape)
+  turtle.write("Hi", font=("Fantasy", 20, ''))
+  
 
 # function 4 (logo design text? limit 1 character)
 def get_text_overlay():
-  print("hi")
+  turtle.write("TEXT", align='center', font=('Pacifico', 48, ''))
 
 main()
