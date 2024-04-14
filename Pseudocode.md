@@ -57,9 +57,22 @@
 > > #### Call Function DiagonalR and send `height` and `width`
 > > #### Call Function DiagonalR and send `height` and `width`
 > >
-> ### else
+> ### else|
 > > #### print = invalid response
 
 ***
 > ## Function 2.1 (Horizontal line)
-> ### 
+> ### Ask for what `spaceing between each line` __(not implemented properly)__m,
+> ### Calculating Number of lines
+> ### number of lines to draw = height // `spaceing between each line`
+> ### For loop with range (from: `-num_cells_y // 2` to `num_cells_y // 2 + 1`)
+> ```
+> explanation of math
+> Since we can't just use the spaceing between each line variable raw we have to adjust and center it.
+> For example lets say we need 6 lines (calculated if height is 300)
+> so, we can't just use the 6 in the for loop since turle does that (0,0) coord thing
+> Therefore, we need to do it such that -3 to 3 to evenly distribute
+> -num_cells_y // 2 (half it and negative)
+> num_cells_y // 2 + 1 (+1 cause python would just stop at 2)
+> ```
+> > #### on doing slight provocations
