@@ -7,6 +7,7 @@ import turtle
 def main():
   # Declare Variables
   screen = turtle.Screen()
+  turtle.speed(0)
   # Ask for what background color
   background_color = input(
       "Enter the desired background color (Red, Blue, Green): ")
@@ -26,6 +27,8 @@ def main():
   # Ask for Text Letter overlay
   text_letter = input("Enter the text letter you want to overlay: ")
   # Call function 4
+  draw_text(screen, text_letter)
+  turtle.done()
   # draw_text(screen, text_letter)
 
 # function 1 (background color)
@@ -120,7 +123,7 @@ def DotPattern(dot_size, spacing, width, height):
 
 # function 2.5 (Reversed diagonal)
 def diagonalR(width, height):
-  turtle.speed(0)  # Set the drawing speed to the fastest
+  turtle.speed(0)
   turtle.penup()
   stripe_width = 20
   diagonal_length = (width**2 + height**2)**0.5
@@ -185,20 +188,40 @@ def draw_square(width, height):
 
 # function 3.3 (circle)
 def draw_circle(width, height):
-  turtle.speed(0)
-  turtle.penup()
-  turtle.goto(0, 0)
-  turtle.pendown()
-  turtle.color("black")
-  turtle.begin_fill()
-  turtle.circle(50)
-  turtle.end_fill()
-  turtle.hideturtle()
+  halfH = height // 2
+  halfW = width // 2
+  if width > height:
+    turtle.speed(0)
+    turtle.penup()
+    turtle.goto(0, -halfH // 2)
+    turtle.pendown()
+    turtle.color("black")
+    turtle.begin_fill()
+    turtle.circle(halfH // 2)
+    turtle.end_fill()
+    turtle.hideturtle()
+  else:
+    turtle.speed(0)
+    turtle.penup()
+    turtle.goto(0, -halfW // 2)
+    turtle.pendown()
+    turtle.color("black")
+    turtle.begin_fill()
+    turtle.circle(halfW // 2)
+    turtle.end_fill()
+    turtle.hideturtle()
 
 
 # function 4 (logo design text? limit 1 character)
-def get_text_overlay():
-  turtle.write("TEXT", align='center', font=('Pacifico', 48, ''))
+def draw_text(screen, text_letter):
+    turtle.speed(0)
+    turtle.penup()
+    # Adjust the position as needed
+    turtle.goto(0, -60)
+    turtle.pendown()
+    turtle.color("white")
+    turtle.write(text_letter, align='center', font=('Impact', 80, 'normal'))
+    turtle.hideturtle()
 
 
 main()
