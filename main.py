@@ -1,5 +1,5 @@
+# import liberaries
 import turtle
-
 # Add documentation
 
 
@@ -10,7 +10,7 @@ def main():
   turtle.speed(0)
   # Ask for what background color
   background_color = input(
-      "Enter the desired background color (Red, Blue, Green): ")
+      "Enter the desired background color (Red, Blue, Green, Etc): ")
   # Call function 1
   set_background_color(screen, background_color)
   # Ask for what background pattern
@@ -212,6 +212,21 @@ def draw_circle(width, height):
     turtle.hideturtle()
 
 
+# ask the user for what font they would like only 3
+  def choose_font():
+    font_choice = input("Choose a font (Arial, Jokerman, Impact): ")
+    if font_choice == 'Arial':
+      return "Arial"
+    elif font_choice == 'Jokerman':
+      return "Jokerman"
+    elif font_choice == 'Impact':
+      return "Impact"
+    else:
+      print("Invalid choice. Defaulting to Arial.")
+      return "Arial"
+
+
+
 # function 4 (logo design text? limit 1 character)
 def draw_text(screen, text_letter):
     turtle.speed(0)
@@ -220,8 +235,11 @@ def draw_text(screen, text_letter):
     turtle.goto(0, -60)
     turtle.pendown()
     turtle.color("white")
-    turtle.write(text_letter, align='center', font=('Impact', 80, 'normal'))
+    turtle.write(text_letter, align='center', font=('BungeeSpice', 80, 'normal'))
     turtle.hideturtle()
 
 
+
 main()
+
+
