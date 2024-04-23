@@ -27,7 +27,7 @@ def main():
   # Ask for Text Letter overlay
   text_letter = input("Enter the text letter you want to overlay: ")
   # Call function 4
-  draw_text(screen, text_letter)
+  draw_text(text_letter)
   turtle.done()
   # draw_text(screen, text_letter)
 
@@ -142,7 +142,6 @@ def diagonalR(width, height):
 # function 3 (foreground design options?)
 def draw_shape(screen, shape):
   width, height = screen.window_width(), screen.window_height()
-  turtle.write("Hi", font=("Fantasy", 20, ''))
   if shape == "diamond":
     draw_diamond(width, height)
   elif shape == "square":
@@ -212,33 +211,34 @@ def draw_circle(width, height):
     turtle.hideturtle()
 
 
-# ask the user for what font they would like only 3
-  def choose_font():
-    font_choice = input("Choose a font (Arial, Jokerman, Impact): ")
-    if font_choice == 'Arial':
-      return "Arial"
-    elif font_choice == 'Jokerman':
-      return "Jokerman"
-    elif font_choice == 'Impact':
-      return "Impact"
-    else:
-      print("Invalid choice. Defaulting to Arial.")
-      return "Arial"
-
-
-
 # function 4 (logo design text? limit 1 character)
-def draw_text(screen, text_letter):
+def draw_text(text_letter):
+    font = fontstyle()
     turtle.speed(0)
     turtle.penup()
     # Adjust the position as needed
     turtle.goto(0, -60)
     turtle.pendown()
     turtle.color("white")
-    turtle.write(text_letter, align='center', font=('BungeeSpice', 80, 'normal'))
+    turtle.write(text_letter, align='center', font=(font, 80, 'normal'))
     turtle.hideturtle()
 
-
+def fontstyle():
+  while True:
+    font = str()
+    print("A, B or C")
+    font = input("('Arial', 'High Tower Text', 'Imprint MT Shadow'): ")
+    if font == "A":
+      return "Arial"
+      break
+    elif font == "B":
+      return "High Tower Text"
+      break
+    elif font == "C":
+      return "Imprint MT Shadow"
+      break
+    else:
+      print("Invalid font style.")
 
 main()
 
