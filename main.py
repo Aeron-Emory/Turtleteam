@@ -29,17 +29,33 @@ def main():
 
 # function 1 (background color)
 def set_background_color(screen):
-  color = str()
-  color = input(
-    "Enter the desired background color (Red, Blue, Green, Etc): ")
+  while True:
+    color = input("Enter the desired background color (Red, Blue, Green, etc.): ")
+    if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  # Add more colors if needed
+        break
+    else:
+        print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White")
   screen.bgcolor(color)
 
 # function 2 (logo back design / pattern options?)
 def draw_grid_pattern(screen):
   pattern = str()
+  color = str()
+  # Prompt user for color choice and validate
   while True:
-    print("Select desired pattern shape")
-    print("1. Grid\n2. Stripes\n3. Diagonal\n4. Dot\n5. Diagonal R\n6. Diagrid")
+      color = input("Enter the desired color for the pattern (Red, Blue, Green, etc.): ")
+      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  # Add more colors if needed
+          break
+      else:
+          print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White")
+
+  # Changing the color
+  turtle.pencolor(color)
+  
+  # Prompt user for pattern choice and validate
+  while True:
+    print("\nSelect desired pattern shape")
+    print("1. Grid\n2. Stripes\n3. Diagonal\n4. Dot\n5. Diagrid")
     pattern = input("Enter a pattern: ")
     width, height = screen.window_width(), screen.window_height()
     if pattern == "Grid":
@@ -55,19 +71,23 @@ def draw_grid_pattern(screen):
       else:
         print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
     elif pattern == "Diagonal":
-      Diagonal(width, height)
-      break
+      dir = input("Enter direction (left/right): ")
+      if dir == "left":
+        Diagonal(width, height)
+        break
+      elif dir == "right":
+        DiagonalR(width, height)
+        break
+      else:
+        print("Invalid direction. Please enter 'left' or 'right'.")
     elif pattern == "Dot":
       dot_size = int(input("Size of each Dots: "))
       spacing = int(input("Spacing between each Dots: "))
       DotPattern(dot_size, spacing, width, height)
       break
-    elif pattern == "Diagonal R":
-      diagonalR(width, height)
-      break
     elif pattern == "Diagrid":
       Diagonal(width, height)
-      diagonalR(width, height)
+      DiagonalR(width, height)
       break
     else:
       print("\nInvalid pattern choice.\n")
@@ -128,7 +148,7 @@ def DotPattern(dot_size, spacing, width, height):
 
 
 # function 2.5 (Reversed diagonal)
-def diagonalR(width, height):
+def DiagonalR(width, height):
   turtle.speed(0)
   turtle.penup()
   stripe_width = 20
@@ -147,6 +167,8 @@ def diagonalR(width, height):
 
 # function 3 (foreground design options?)
 def draw_shape(screen, shape):
+  color = str()
+  color = input("\nEnter the desired color for shape: ")
   width, height = screen.window_width(), screen.window_height()
   while shape not in ["diamond", "square", "circle"]:
     print("Invalid shape choice. Please choose from 'diamond', 'square', or 'circle'.")
@@ -154,11 +176,13 @@ def draw_shape(screen, shape):
 
   if shape == "diamond":
     draw_diamond(width, height)
+    turtle.fillcolor(color)
   elif shape == "square":
     draw_square(width, height)
+    turtle.fillcolor(color)
   elif shape == "circle":
     draw_circle(width, height)
-
+    turtle.fillcolor(color)
 # function 3.1 (diamond)
 def draw_diamond(width, height):
   halfH = height // 2
