@@ -18,7 +18,7 @@ def main():
   pattern_choice = input(
       "(Grid, Stripes, Diagonal, Dot, Diagonal R, Diagrid): ")
   # Call function 2
-  draw_grid_pattern(screen, pattern_choice)
+  draw_grid_pattern(screen,)
   # Ask for what shape
   shape_choice = input(
       "Enter the shape you want to draw (diamond, square, circle): ").lower()
@@ -37,35 +37,39 @@ def set_background_color(screen, color):
 
 
 # function 2 (logo back design / pattern options?)
-def draw_grid_pattern(screen, pattern):
-  width, height = screen.window_width(), screen.window_height()
-  if pattern == "Grid":
-    Verticle(width, height)
-    Horizontal(width, height)
-  elif pattern == "Stripes":
-    stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
-    if stripe_direction == "horizontal":
-      Horizontal(width, height)
-    elif stripe_direction == "vertical":
-      Verticle(width, height)
-    else:
-      print(
-          "Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
-  elif pattern == "Diagonal":
-    Diagonal(width, height)
-  elif pattern == "Dot":
-    dot_size = int(input("Size of each Dots: "))
-    spacing = int(input("Spacing between each Dots: "))
-    DotPattern(dot_size, spacing, width, height)
-  elif pattern == "Diagonal R":
-    diagonalR(width, height)
-  elif pattern == "Diagrid":
-    Diagonal(width, height)
-    diagonalR(width, height)
-  else:
-    print("Invalid pattern choice. Please choose from")
-    print("'Grid', 'Stripes', 'Diagonal', 'Dot', 'Diagonal R', or 'Diagrid'.")
-
+def draw_grid_pattern(screen):
+  while True:
+      pattern = input("Enter a pattern ('Grid', 'Stripes', 'Diagonal', 'Dot', 'Diagonal R', 'Diagrid'): ")
+      width, height = screen.window_width(), screen.window_height()
+      if pattern == "Grid":
+          Verticle(width, height)
+          Horizontal(width, height)
+          break
+      elif pattern == "Stripes":
+          stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
+          if stripe_direction == "horizontal":
+              Horizontal(width, height)
+          elif stripe_direction == "vertical":
+              Verticle(width, height)
+          else:
+              print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
+      elif pattern == "Diagonal":
+          Diagonal(width, height)
+          break
+      elif pattern == "Dot":
+          dot_size = int(input("Size of each Dots: "))
+          spacing = int(input("Spacing between each Dots: "))
+          DotPattern(dot_size, spacing, width, height)
+          break
+      elif pattern == "Diagonal R":
+          diagonalR(width, height)
+          break
+      elif pattern == "Diagrid":
+          Diagonal(width, height)
+          diagonalR(width, height)
+          break
+      else:
+          print("Invalid pattern choice. Please choose from 'Grid', 'Stripes', 'Diagonal', 'Dot', 'Diagonal R', or 'Diagrid'.")
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
@@ -142,14 +146,16 @@ def diagonalR(width, height):
 # function 3 (foreground design options?)
 def draw_shape(screen, shape):
   width, height = screen.window_width(), screen.window_height()
+  while shape not in ["diamond", "square", "circle"]:
+    print("Invalid shape choice. Please choose from 'diamond', 'square', or 'circle'.")
+    shape = input("Enter the shape you want to draw (diamond, square, circle): ").lower()
+
   if shape == "diamond":
     draw_diamond(width, height)
   elif shape == "square":
     draw_square(width, height)
   elif shape == "circle":
     draw_circle(width, height)
-  else:
-    print("Invalid shape choice. Please choose from 'diamond', 'square', or 'circle'.")
 
 # function 3.1 (diamond)
 def draw_diamond(width, height):
