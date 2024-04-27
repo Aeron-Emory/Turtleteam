@@ -8,17 +8,13 @@ def main():
   # Declare Variables
   screen = turtle.Screen()
   turtle.speed(0)
-  # Ask for what background color
-  background_color = input(
-      "Enter the desired background color (Red, Blue, Green, Etc): ")
+  
   # Call function 1
-  set_background_color(screen, background_color)
-  # Ask for what background pattern
-  print("Enter the desired pattern shape")
-  pattern_choice = input(
-      "(Grid, Stripes, Diagonal, Dot, Diagonal R, Diagrid): ")
+  set_background_color(screen)
+
   # Call function 2
-  draw_grid_pattern(screen,)
+  draw_grid_pattern(screen)
+  
   # Ask for what shape
   shape_choice = input(
       "Enter the shape you want to draw (diamond, square, circle): ").lower()
@@ -32,44 +28,50 @@ def main():
   # draw_text(screen, text_letter)
 
 # function 1 (background color)
-def set_background_color(screen, color):
+def set_background_color(screen):
+  color = str()
+  color = input(
+    "Enter the desired background color (Red, Blue, Green, Etc): ")
   screen.bgcolor(color)
-
 
 # function 2 (logo back design / pattern options?)
 def draw_grid_pattern(screen):
+  pattern = str()
   while True:
-      pattern = input("Enter a pattern ('Grid', 'Stripes', 'Diagonal', 'Dot', 'Diagonal R', 'Diagrid'): ")
-      width, height = screen.window_width(), screen.window_height()
-      if pattern == "Grid":
-          Verticle(width, height)
-          Horizontal(width, height)
-          break
-      elif pattern == "Stripes":
-          stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
-          if stripe_direction == "horizontal":
-              Horizontal(width, height)
-          elif stripe_direction == "vertical":
-              Verticle(width, height)
-          else:
-              print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
-      elif pattern == "Diagonal":
-          Diagonal(width, height)
-          break
-      elif pattern == "Dot":
-          dot_size = int(input("Size of each Dots: "))
-          spacing = int(input("Spacing between each Dots: "))
-          DotPattern(dot_size, spacing, width, height)
-          break
-      elif pattern == "Diagonal R":
-          diagonalR(width, height)
-          break
-      elif pattern == "Diagrid":
-          Diagonal(width, height)
-          diagonalR(width, height)
-          break
+    print("Select desired pattern shape")
+    print("1. Grid\n2. Stripes\n3. Diagonal\n4. Dot\n5. Diagonal R\n6. Diagrid")
+    pattern = input("Enter a pattern: ")
+    width, height = screen.window_width(), screen.window_height()
+    if pattern == "Grid":
+      Verticle(width, height)
+      Horizontal(width, height)
+      break
+    elif pattern == "Stripes":
+      stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
+      if stripe_direction == "horizontal":
+        Horizontal(width, height)
+      elif stripe_direction == "vertical":
+        Verticle(width, height)
       else:
-          print("Invalid pattern choice. Please choose from 'Grid', 'Stripes', 'Diagonal', 'Dot', 'Diagonal R', or 'Diagrid'.")
+        print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
+    elif pattern == "Diagonal":
+      Diagonal(width, height)
+      break
+    elif pattern == "Dot":
+      dot_size = int(input("Size of each Dots: "))
+      spacing = int(input("Spacing between each Dots: "))
+      DotPattern(dot_size, spacing, width, height)
+      break
+    elif pattern == "Diagonal R":
+      diagonalR(width, height)
+      break
+    elif pattern == "Diagrid":
+      Diagonal(width, height)
+      diagonalR(width, height)
+      break
+    else:
+      print("\nInvalid pattern choice.\n")
+      Q = input("Try again")
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
