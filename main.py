@@ -8,18 +8,16 @@ def main():
   # Declare Variables
   screen = turtle.Screen()
   turtle.speed(0)
-  
+
   # Call function 1
   set_background_color(screen)
 
   # Call function 2
   draw_grid_pattern(screen)
-  
-  # Ask for what shape
-  shape_choice = input(
-      "Enter the shape you want to draw (diamond, square, circle): ").lower()
+
   # Call function 3
-  draw_shape(screen, shape_choice)
+  draw_shape(screen)
+
   # Ask for Text Letter overlay
   text_letter = input("Enter the text letter you want to overlay: ")
   # Call function 4
@@ -29,6 +27,7 @@ def main():
 
 # function 1 (background color)
 def set_background_color(screen):
+  color = str
   while True:
     color = input("Enter the desired background color (Red, Blue, Green, etc.): ")
     if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  # Add more colors if needed
@@ -38,60 +37,61 @@ def set_background_color(screen):
   screen.bgcolor(color)
 
 # function 2 (logo back design / pattern options?)
+pattern = str
+color = str
 def draw_grid_pattern(screen):
   pattern = str()
   color = str()
-  # Prompt user for color choice and validate
   while True:
       color = input("Enter the desired color for the pattern (Red, Blue, Green, etc.): ")
-      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  # Add more colors if needed
+      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  
           break
       else:
           print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White")
-
-  # Changing the color
+  # change color
   turtle.pencolor(color)
-  
-  # Prompt user for pattern choice and validate
+
   while True:
-    print("\nSelect desired pattern shape")
-    print("1. Grid\n2. Stripes\n3. Diagonal\n4. Dot\n5. Diagrid")
-    pattern = input("Enter a pattern: ")
-    width, height = screen.window_width(), screen.window_height()
-    if pattern == "Grid":
-      Verticle(width, height)
-      Horizontal(width, height)
-      break
-    elif pattern == "Stripes":
-      stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
-      if stripe_direction == "horizontal":
-        Horizontal(width, height)
-      elif stripe_direction == "vertical":
-        Verticle(width, height)
+      print("\nSelect desired pattern shape")
+      print("1. Grid\n2. Stripes\n3. Diagonal\n4. Dot\n5. Diagrid")
+      pattern = input("Enter a pattern: ")
+      width, height = screen.window_width(), screen.window_height()
+      if pattern == "Grid":
+          Verticle(width, height)
+          Horizontal(width, height)
+          break
+      elif pattern == "Stripes":
+          stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
+          if stripe_direction == "horizontal":
+              Horizontal(width, height)
+          elif stripe_direction == "vertical":
+              Verticle(width, height)
+          else:
+              print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
+          break
+      elif pattern == "Diagonal":
+          dir = input("Enter direction (left/right): ")
+          if dir == "left":
+              Diagonal(width, height)
+              break
+          elif dir == "right":
+              DiagonalR(width, height)
+              break
+          else:
+              print("Invalid direction. Please enter 'left' or 'right'.")
+      elif pattern == "Dot":
+          dot_size = int(input("Size of each Dots: "))
+          spacing = int(input("Spacing between each Dots: "))
+          DotPattern(dot_size, spacing, width, height)
+          break
+      elif pattern == "Diagrid":
+          Diagonal(width, height)
+          DiagonalR(width, height)
+          break
       else:
-        print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
-    elif pattern == "Diagonal":
-      dir = input("Enter direction (left/right): ")
-      if dir == "left":
-        Diagonal(width, height)
-        break
-      elif dir == "right":
-        DiagonalR(width, height)
-        break
-      else:
-        print("Invalid direction. Please enter 'left' or 'right'.")
-    elif pattern == "Dot":
-      dot_size = int(input("Size of each Dots: "))
-      spacing = int(input("Spacing between each Dots: "))
-      DotPattern(dot_size, spacing, width, height)
-      break
-    elif pattern == "Diagrid":
-      Diagonal(width, height)
-      DiagonalR(width, height)
-      break
-    else:
-      print("\nInvalid pattern choice.\n")
-      Q = input("Try again")
+          print("\nInvalid pattern choice.\n")
+          Q = input("Try again")
+
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
@@ -151,6 +151,7 @@ def DotPattern(dot_size, spacing, width, height):
 def DiagonalR(width, height):
   turtle.speed(0)
   turtle.penup()
+  stripe_width = int()
   stripe_width = 20
   diagonal_length = (width**2 + height**2)**0.5
   num_stripes = int(diagonal_length // stripe_width) + 1
@@ -166,13 +167,16 @@ def DiagonalR(width, height):
 
 
 # function 3 (foreground design options?)
-def draw_shape(screen, shape):
+def draw_shape(screen):
+  shape = input(
+    "Enter the shape you want to draw (diamond, square, circle): ").lower()
   color = str()
   color = input("\nEnter the desired color for shape: ")
   width, height = screen.window_width(), screen.window_height()
   while shape not in ["diamond", "square", "circle"]:
     print("Invalid shape choice. Please choose from 'diamond', 'square', or 'circle'.")
-    shape = input("Enter the shape you want to draw (diamond, square, circle): ").lower()
+    print("\n1. Diamond\n2. Square\n3. Circle")
+    shape = input("Enter the shape you want to draw: ").lower()
 
   if shape == "diamond":
     draw_diamond(width, height)
@@ -243,7 +247,7 @@ def draw_circle(width, height):
     turtle.hideturtle()
 
 
-# function 4 (logo design text? limit 1 character)
+# function 4 (logo design text?)
 def draw_text(text_letter):
     font = fontstyle()
     turtle.speed(0)
@@ -255,23 +259,28 @@ def draw_text(text_letter):
     turtle.write(text_letter, align='center', font=(font, 80, 'normal'))
     turtle.hideturtle()
 
+# function 5 (logo design font?
 def fontstyle():
   while True:
     font = str()
     print("A, B or C")
-    font = input("('Arial', 'High Tower Text', 'Imprint MT Shadow'): ")
-    if font == "A":
+    font = input("('Arial', 'High Tower Text', 'Imprint MT Shadow'): ").lower()
+    if font == "a":
       return "Arial"
       break
-    elif font == "B":
+    elif font == "b":
       return "High Tower Text"
       break
-    elif font == "C":
+    elif font == "c":
       return "Imprint MT Shadow"
       break
     else:
       print("Invalid font style.")
 
+
+
+
+# call main
 main()
 
 
