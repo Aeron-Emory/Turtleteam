@@ -37,8 +37,6 @@ def set_background_color(screen):
   screen.bgcolor(color)
 
 # function 2 (logo back design / pattern options?)
-pattern = str
-color = str
 def draw_grid_pattern(screen):
   pattern = str()
   color = str()
