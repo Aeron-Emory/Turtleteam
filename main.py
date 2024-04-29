@@ -1,9 +1,7 @@
-# 
-
-
-
-
-
+# Logo Designer
+# 3/27/2024 - 4/28/2024
+# Sm Fardeen Haque, Maylad Hanna, Silver Dankha
+# This program will create a logo from inputs taken by users using turtle graphics
 
 # import liberaries
 import turtle
