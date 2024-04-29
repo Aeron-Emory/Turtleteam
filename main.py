@@ -44,7 +44,7 @@ def draw_grid_pattern(screen):
   color = str()
   while True:
       color = input("Enter the desired color for the pattern (Red, Blue, Green, etc.): ")
-      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  
+      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:
           break
       else:
           print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White")
@@ -90,7 +90,7 @@ def draw_grid_pattern(screen):
           break
       else:
           print("\nInvalid pattern choice.\n")
-          Q = input("Try again")
+          Q = input("Press Enter to Continue")
 
 
 # function 2.1 (Verticle lines)
@@ -179,23 +179,23 @@ def draw_shape(screen):
     shape = input("Enter the shape you want to draw: ").lower()
 
   if shape == "diamond":
-    draw_diamond(width, height)
-    turtle.fillcolor(color)
+    draw_diamond(width, height, color)
+    
   elif shape == "square":
-    draw_square(width, height)
-    turtle.fillcolor(color)
+    draw_square(width, height, color)
+    
   elif shape == "circle":
-    draw_circle(width, height)
-    turtle.fillcolor(color)
+    draw_circle(width, height, color)
+    
 # function 3.1 (diamond)
-def draw_diamond(width, height):
+def draw_diamond(width, height, color):
   halfH = height // 2
   halfW = width // 2
   turtle.speed(0)
   turtle.penup()
   turtle.goto(0, halfH // 2)
   turtle.pendown()
-  turtle.color("black")
+  turtle.color(color)
   turtle.begin_fill()
   turtle.goto(halfW // 2, 0)
   turtle.goto(0, -halfH // 2)
@@ -205,14 +205,14 @@ def draw_diamond(width, height):
   turtle.hideturtle()
 
 # function 3.2 (square)
-def draw_square(width, height):
+def draw_square(width, height, color):
   halfH = height // 2
   halfW = width // 2
   turtle.speed(0)
   turtle.penup()
   turtle.goto(halfW // 2, halfH // 2)
   turtle.pendown()
-  turtle.color("black")
+  turtle.color(color)
   turtle.begin_fill()
   turtle.goto(halfW // 2, -halfH // 2)
   turtle.goto(-halfW // 2, -halfH // 2)
@@ -222,7 +222,7 @@ def draw_square(width, height):
   turtle.hideturtle()
 
 # function 3.3 (circle)
-def draw_circle(width, height):
+def draw_circle(width, height, color):
   halfH = height // 2
   halfW = width // 2
   if width > height:
@@ -230,7 +230,7 @@ def draw_circle(width, height):
     turtle.penup()
     turtle.goto(0, -halfH // 2)
     turtle.pendown()
-    turtle.color("black")
+    turtle.color(color)
     turtle.begin_fill()
     turtle.circle(halfH // 2)
     turtle.end_fill()
@@ -240,7 +240,7 @@ def draw_circle(width, height):
     turtle.penup()
     turtle.goto(0, -halfW // 2)
     turtle.pendown()
-    turtle.color("black")
+    turtle.color(color)
     turtle.begin_fill()
     turtle.circle(halfW // 2)
     turtle.end_fill()
@@ -263,15 +263,15 @@ def draw_text(text_letter):
 def fontstyle():
   while True:
     font = str()
-    print("A, B or C")
-    font = input("('Arial', 'High Tower Text', 'Imprint MT Shadow'): ").lower()
-    if font == "a":
+    print("A. Arial\nB. High Tower Text\nC. Imprint MT Shadow")
+    font = input("(Choose Font: ").lower()
+    if font == "a" or font == "arial":
       return "Arial"
       break
-    elif font == "b":
+    elif font == "b" or font == "high tower text":
       return "High Tower Text"
       break
-    elif font == "c":
+    elif font == "c" or font == "imprint mt shadow":
       return "Imprint MT Shadow"
       break
     else:
