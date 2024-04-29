@@ -1,9 +1,15 @@
+# 
+
+
+
+
+
+
 # import liberaries
 import turtle
-# Add documentation
 
 
-# main function (all inputs in main)
+# main function (all inputs in main) created by Sm Fardeen Haque
 def main():
   # Declare Variables
   screen = turtle.Screen()
@@ -25,7 +31,7 @@ def main():
   turtle.done()
   # draw_text(screen, text_letter)
 
-# function 1 (background color)
+# function 1 (background color) # Coded by Silver, Looped by Maylad Hanna
 def set_background_color(screen):
   color = str
   while True:
@@ -36,10 +42,12 @@ def set_background_color(screen):
         print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Grey, Black, White")
   screen.bgcolor(color)
 
-# function 2 (logo back design / pattern options?)
+# function 2 (logo back design / pattern options?) # Foundation coded by Sm Fardeen Haque, modified by Silver Dankha, and looped by Maylad Hanna
 def draw_grid_pattern(screen):
+  # Declare Varibles
   pattern = str()
   color = str()
+  # Main Code for the function
   while True:
       color = input("Enter the desired color for the pattern (Red, Blue, Green, etc.): ")
       if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple", "grey"]:
@@ -98,8 +106,11 @@ def draw_grid_pattern(screen):
 
 # function 2.1 (Verticle lines)
 def Verticle(width, height):
-  turtle.speed(0)
+  # Declare Variables
   lines = int()
+  # Set Turtle
+  turtle.speed(0)
+  # Calculate and Draw the lines
   lines = width // 50
   for x in range(-lines // 2, lines // 2 + 1):
     turtle.penup()
@@ -110,8 +121,11 @@ def Verticle(width, height):
 
 # function 2.2 (Horizontal lines)
 def Horizontal(width, height):
-  turtle.speed(0)
+  # Declare Varible
   lines = int()
+  # Set turle
+  turtle.speed(0)
+  # Calculate and Draw the lines
   lines = height // 50
   for y in range(-lines // 2, lines // 2 + 1):
     turtle.penup()
@@ -122,11 +136,17 @@ def Horizontal(width, height):
 
 # function 2.3 (Diagonal lines)
 def Diagonal(width, height):
+  # Declare Variables
+  stripe_width = int()
+  diagonal_length = int()
+  # turtle setup
   turtle.speed(0)
   turtle.penup()
+  # set variables
   stripe_width = 20
   diagonal_length = (width**2 + height**2)**0.5
   num_stripes = int(diagonal_length // stripe_width) + 1
+  # loop to draw
   for i in range(-num_stripes, num_stripes):
     start_x = max(-width / 2, -width / 2 + i * stripe_width)
     start_y = min(height / 2, height / 2 + i * stripe_width)
@@ -140,10 +160,16 @@ def Diagonal(width, height):
 
 # function 2.4 (Dots)
 def DotPattern(dot_size, spacing, width, height):
+  # Declare Variables
+  start_x = int()
+  start_y = int()
+  # Set Turtle
   turtle.speed(0)
   turtle.penup()
+  # Set Varibles
   start_x = -width / 2 + spacing / 2
   start_y = height / 2 - spacing / 2
+  # Loop to draw
   for y in range(int(height / spacing)):
     for x in range(int(width / spacing)):
       turtle.goto(start_x + x * spacing, start_y - y * spacing)
@@ -152,12 +178,16 @@ def DotPattern(dot_size, spacing, width, height):
 
 # function 2.5 (Reversed diagonal)
 def DiagonalR(width, height):
+  # Declare Variables
+  stripe_width = int()
+  # Set Turtle
   turtle.speed(0)
   turtle.penup()
-  stripe_width = int()
+  # Set Varibles
   stripe_width = 20
   diagonal_length = (width**2 + height**2)**0.5
   num_stripes = int(diagonal_length // stripe_width) + 1
+  # Loop to draw
   for i in range(-num_stripes, num_stripes):
     start_x = min(width / 2, width / 2 - i * stripe_width)
     start_y = min(height / 2, height / 2 + i * stripe_width)
@@ -194,8 +224,13 @@ def draw_shape(screen):
     
 # function 3.1 (diamond)
 def draw_diamond(width, height, color):
+  # Declare Variables
+  halfH = int()
+  halfW = int()
+  # Set Varibles
   halfH = height // 2
   halfW = width // 2
+  # Set Turtle and color to draw
   turtle.speed(0)
   turtle.penup()
   turtle.goto(0, halfH // 2)
@@ -211,8 +246,13 @@ def draw_diamond(width, height, color):
 
 # function 3.2 (square)
 def draw_square(width, height, color):
+  # Declare Variables
+  halfH = int()
+  halfW = int()
+  # Set Varibles
   halfH = height // 2
   halfW = width // 2
+  # Set Turtle and color to draw
   turtle.speed(0)
   turtle.penup()
   turtle.goto(halfW // 2, halfH // 2)
@@ -228,8 +268,13 @@ def draw_square(width, height, color):
 
 # function 3.3 (circle)
 def draw_circle(width, height, color):
+  # Declare Variables
+  halfH = int()
+  halfW = int()
+  # Set Varibles
   halfH = height // 2
   halfW = width // 2
+  # Set Turtle and color to draw
   if width > height:
     turtle.speed(0)
     turtle.penup()
@@ -252,7 +297,7 @@ def draw_circle(width, height, color):
     turtle.hideturtle()
 
 
-# function 4 (logo design text?)
+# function 4 (logo design text?) Code created by Maylad Hanna
 def draw_text(text_letter):
     font = fontstyle()
     turtle.speed(0)
@@ -264,7 +309,7 @@ def draw_text(text_letter):
     turtle.write(text_letter, align='center', font=(font, 80, 'normal'))
     turtle.hideturtle()
 
-# function 5 (logo design font?
+# function 5 (logo design font?) Idea by Silver Dankha, Revised and Corrected by Sm Fardeen Haque
 def fontstyle():
   while True:
     font = str()
