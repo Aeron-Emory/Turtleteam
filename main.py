@@ -30,10 +30,10 @@ def set_background_color(screen):
   color = str
   while True:
     color = input("Enter the desired background color (Red, Blue, Green, etc.): ")
-    if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:  # Add more colors if needed
+    if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple", "grey"]:  # Add more colors if needed
         break
     else:
-        print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White")
+        print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Grey, Black, White")
   screen.bgcolor(color)
 
 # function 2 (logo back design / pattern options?)
@@ -44,13 +44,14 @@ def draw_grid_pattern(screen):
   color = str()
   while True:
       color = input("Enter the desired color for the pattern (Red, Blue, Green, etc.): ")
-      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple"]:
+      if color.lower() in ["red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan", "black", "white", "purple", "grey"]:
           break
       else:
-          print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Black, White")
+          print("Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Grey, Black, White")
   # change color
   turtle.pencolor(color)
 
+    #ask the user for what pattern they would like and what color they want it to be
   while True:
       print("\nSelect desired pattern shape")
       print("1. Grid\n2. Stripes\n3. Diagonal\n4. Dot\n5. Diagrid")
@@ -60,6 +61,7 @@ def draw_grid_pattern(screen):
           Verticle(width, height)
           Horizontal(width, height)
           break
+        #stripes code
       elif pattern == "Stripes":
           stripe_direction = input("Enter stripe direction (horizontal/vertical): ")
           if stripe_direction == "horizontal":
@@ -69,6 +71,7 @@ def draw_grid_pattern(screen):
           else:
               print("Invalid stripe direction. Please enter 'horizontal' or 'vertical'.")
           break
+      # diagonal code
       elif pattern == "Diagonal":
           dir = input("Enter direction (left/right): ")
           if dir == "left":
@@ -79,11 +82,13 @@ def draw_grid_pattern(screen):
               break
           else:
               print("Invalid direction. Please enter 'left' or 'right'.")
+      # dot code
       elif pattern == "Dot":
           dot_size = int(input("Size of each Dots: "))
           spacing = int(input("Spacing between each Dots: "))
           DotPattern(dot_size, spacing, width, height)
           break
+      # diagrid code
       elif pattern == "Diagrid":
           Diagonal(width, height)
           DiagonalR(width, height)
@@ -170,6 +175,7 @@ def DiagonalR(width, height):
 def draw_shape(screen):
   shape = input(
     "Enter the shape you want to draw (diamond, square, circle): ").lower()
+  # user inputs for shape
   color = str()
   color = input("\nEnter the desired color for shape: ")
   width, height = screen.window_width(), screen.window_height()
@@ -178,6 +184,7 @@ def draw_shape(screen):
     print("\n1. Diamond\n2. Square\n3. Circle")
     shape = input("Enter the shape you want to draw: ").lower()
 
+  # if structure for shape
   if shape == "diamond":
     draw_diamond(width, height, color)
     
@@ -264,20 +271,16 @@ def fontstyle():
   while True:
     font = str()
     print("A. Arial\nB. High Tower Text\nC. Imprint MT Shadow")
-    font = input("(Choose Font: ").lower()
+    font = input("Choose Font: ").lower()
+    # if structure for choosing font
     if font == "a" or font == "arial":
       return "Arial"
-      break
     elif font == "b" or font == "high tower text":
       return "High Tower Text"
-      break
     elif font == "c" or font == "imprint mt shadow":
       return "Imprint MT Shadow"
-      break
     else:
       print("Invalid font style.")
-
-
 
 
 # call main
