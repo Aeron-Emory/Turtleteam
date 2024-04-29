@@ -22,10 +22,8 @@ def main():
   # Call function 3
   draw_shape(screen)
 
-  # Ask for Text Letter overlay
-  text_letter = input("Enter the text letter you want to overlay: ")
   # Call function 4
-  draw_text(text_letter)
+  draw_text()
   turtle.done()
   # draw_text(screen, text_letter)
 
@@ -216,30 +214,40 @@ def DiagonalR(width, height):
 
 # function 3 (foreground design options?)
 def draw_shape(screen):
-  shape = input(
-      "Enter the shape you want to draw (diamond, square, circle): ").lower()
-  # user inputs for shape
+  # Declare Variables
   color = str()
-  color = input("\nEnter the desired color for shape: ")
+  shape = str()
+  # loop for color
+  while True:
+    color = input(
+        "Enter the desired color for the shape (White, Black, Red, etc.): ")
+    if color.lower() in [
+        "red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan",
+        "black", "white", "purple", "grey"
+    ]:
+      break
+    else:
+      print(
+          "Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Grey, Black, White")
+  # get screen size
   width, height = screen.window_width(), screen.window_height()
-  while shape not in ["diamond", "square", "circle"]:
-    print(
-        "Invalid shape choice. Please choose from 'diamond', 'square', or 'circle'."
-    )
+  # loop for choice
+  while True:
     print("\n1. Diamond\n2. Square\n3. Circle")
     shape = input("Enter the shape you want to draw: ").lower()
-
-  # if structure for shape
-  if shape == "diamond":
-    draw_diamond(width, height, color)
-
-  elif shape == "square":
-    draw_square(width, height, color)
-
-  elif shape == "circle":
-    draw_circle(width, height, color)
-
-
+    # if structure for shape
+    if shape == "diamond":
+      draw_diamond(width, height, color)
+      break
+    elif shape == "square":
+      draw_square(width, height, color)
+      break
+    elif shape == "circle":
+      draw_circle(width, height, color)
+      break
+    else:
+      print("Invalid shape choice.")
+    
 # function 3.1 (diamond)
 def draw_diamond(width, height, color):
   # Declare Variables
@@ -318,14 +326,31 @@ def draw_circle(width, height, color):
 
 
 # function 4 (logo design text?) Code created by Maylad Hanna
-def draw_text(text_letter):
+def draw_text():
+  # Declare Variables
+  text_letter = str()
+  text_color = str()
+  # Get inputs
+  text_letter = input("\nEnter the text you want displayed: ")
+  while True:
+    text_color = input(
+        "Enter the desired color for the text (White, Black, Red, etc.): ")
+    if text_color.lower() in [
+        "red", "blue", "green", "yellow", "orange", "pink", "brown", "cyan",
+        "black", "white", "purple", "grey"
+    ]:
+      break
+    else:
+      print(
+          "Invalid color. Please choose from: Red, Blue, Green, Yellow, Orange, Pink, Purple, Brown, Grey, Black, White")
   font = fontstyle()
   turtle.speed(0)
   turtle.penup()
+ 
   # Adjust the position as needed
   turtle.goto(0, -60)
   turtle.pendown()
-  turtle.color("white")
+  turtle.color(text_color)
   turtle.write(text_letter, align='center', font=(font, 80, 'normal'))
   turtle.hideturtle()
 
@@ -335,7 +360,7 @@ def fontstyle():
   while True:
     # Declare Variables
     font = str()
-    print("A. Arial\nB. High Tower Text\nC. Imprint MT Shadow")
+    print("\nA. Arial\nB. High Tower Text\nC. Imprint MT Shadow")
     # input for font
     font = input("Choose Font: ").lower()
     # if structure for choosing font
